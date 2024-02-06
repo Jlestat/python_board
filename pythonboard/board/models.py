@@ -7,5 +7,10 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ['created_at', 'updated_at']
+        verbose_name = 'Объявление'
+        verbose_name_plural = 'Объявления'
+
     def __str__(self):
         return self.title
