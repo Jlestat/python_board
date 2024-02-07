@@ -1,10 +1,36 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Доска объявлений</title>
 </head>
 <body>
-
+    <header>
+        <div class="container">
+            <h1>Доска объявлений</h1>
+        </div>
+    </header>
+    <div class="container">
+        <div class="posts">
+            {% for post in posts %}
+                <div class="post">
+                    <h2 class="post-title">{{ post.title }}</h2>
+                    <p class="post-meta">Опубликовано: {{ post.created_at|date:"d M Y H:i" }}</p>
+                    <div class="post-description">{{ post.description }}</div>
+                </div>
+            {% empty %}
+                <p>Объявлений пока нет.</p>
+            {% endfor %}
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            &copy; {{ year }} Доска объявлений. Все права защищены.
+        </div>
+    </footer>
 </body>
 </html>
