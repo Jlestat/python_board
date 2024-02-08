@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+<div class="container">
+        <div class="posts">
+            {% for post in posts %}
+                <div class="post">
+                    <h2 class="post-title">{{ post.title }}</h2>
+                    <p class="post-meta">Опубликовано: {{ post.created_at|date:"d M Y H:i" }}</p>
+                    <div class="post-description">{{ post.description }}</div>
+                </div>
+            {% empty %}
+                <p>Объявлений пока нет.</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

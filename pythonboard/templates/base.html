@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Доска объявлений</title>
+    <title>{% block title %}Доска объявлений{% endblock %}</title>
 </head>
 <body>
     <header>
@@ -14,6 +14,7 @@
             <h1>Доска объявлений</h1>
         </div>
     </header>
+    {% block content %}
     <div class="container">
         <div class="posts">
             {% for post in posts %}
@@ -27,6 +28,7 @@
             {% endfor %}
         </div>
     </div>
+    {% endblock %}
     <footer>
         <div class="container">
             &copy; {{ year }} Доска объявлений. Все права защищены.
