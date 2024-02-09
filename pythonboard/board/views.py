@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.views.generic import DetailView
 from .models import Post
 from django.utils.timezone import now
 from .forms import PostForm
@@ -18,3 +19,11 @@ def post_create(request):
     else:
         form = PostForm()
     return render(request, 'post_create.html', {'form': form})
+
+
+class PostDetailView(DetailView):
+    model = Post
+    template_name = 'post_detail.html'
+    context_object_name = 'post'
+
+
