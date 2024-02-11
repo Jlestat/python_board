@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block title %} Редактирования объявления{% endblock %}
+
+{% block content %}
+<body>
+    <div id="postContent">
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.description }}</p>
+    <button id="editPostButton">Редактировать</button>
+</div>
+
+<div id="editPostForm" style="display:none;">
+    <form>
+        {% csrf_token %}
+        <label for="title">Заголовок:</label>
+        <input type="text" id="editTitle" name="title" value="{{ post.title }}" required>
+
+        <label for="description">Описание:</label>
+        <textarea id="editDescription" name="description" required>{{ post.description }}</textarea>
+
+        <button type="submit">Сохранить изменения</button>
+    </form>
+</div>
+{% endblock %}
